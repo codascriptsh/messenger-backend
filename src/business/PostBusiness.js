@@ -20,7 +20,9 @@ class PostBusiness {
   }
 
   async create({ userId, message, image }) {
-    image.url = `${appConfig.url}/images/${image.filename}`
+    if (image) {
+      image.url = `${appConfig.url}/images/${image.filename}`
+    }
 
     await PostQueries.create({ userId, message, image })
   }
